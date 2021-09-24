@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -33,8 +34,36 @@ class LoginController extends Controller
      *
      * @return void
      */
+    public function showLogin()
+    {
+        return abort(404);
+    }
+
+    public function showLogout()
+    {
+        return abort(404);
+    }
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->hasRole('admin')){
+            return redirect()->route('admin.dashboard')->with('success', 'Berhasil Login!');
+        }
+
+        elseif ($user->hasRole('auditee')){
+            return redirect()->route('auditee.dashboard')->with('success', 'Berhasil Login!');
+        }
+
+        elseif ($user->hasRole('auditor')){
+            return redirect()->route('auditor.dashboard')->with('success', 'Berhasil Login!');
+        }
+
+        return redirect()->route('home')->with('error', 'Login Gagal');
+    }
+
 }

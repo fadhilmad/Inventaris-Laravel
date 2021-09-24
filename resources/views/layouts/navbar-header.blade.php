@@ -5,53 +5,88 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    {{--  css  --}}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
     <title>Sistem Informasi Inventaris Unipma</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 {{--Navbar--}}
-<nav class="navbar navbar-light bg-light">
+<header class="p-3 bg-primary text-dark">
     <div class="container-fluid">
-        <div class="d-flex flex-column bd-highlight">
-            <div class="bd-highlight"><a class="navbar-brand">Sistem Informasi Inventaris</a></div>
-            <div class="bd-highlight">Universitas PGRI Madiun</div>
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a class="d-flex align-items-center mb-lg-0 text-dark text-decoration-none">
+                <img src="{{url('/img/unipma.png')}}" width="50" height="50" role="img">
+            </a>
+
+            <p class="col-12 col-lg-auto me-lg-auto justify-content-center mb-md-0 ms-3">
+                Sistem Informasi Inventaris <br> UNIVERSITAS PGRI MADIUN
+            </p>
+
+            @guest
+
+            @else
+                <div class="text-end">
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle text-capitalize" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                 class="bi bi-person-circle me-1" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                <path fill-rule="evenodd"
+                                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                            </svg>
+                            {{ Auth::user()->name }}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            @if (Auth::user()->hasRole('admin'))
+                                <li>
+                                    <a class="dropdown-item unstyled"
+                                       href="{{ route('admin.dashboard') }}">{{ __('Beranda') }}</a>
+                                </li>
+                            @elseif (Auth::user()->hasRole('auditee'))
+
+                                <li>
+                                    <a class="dropdown-item unstyled"
+                                       href="{{ route('auditee.dashboard') }}">{{ __('Beranda') }}</a>
+                                </li>
+
+                            @elseif (Auth::user()->hasRole('auditor'))
+
+
+                            @endif
+
+                            <li>
+                                <a class="dropdown-item unstyled" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+
+                </div>
+            @endguest
+
         </div>
     </div>
-</nav>
+    </div>
+</header>
 {{--navbar--}}
 
-<div class="container" style="height: 78vh;">
-    <div class="d-flex justify-content-end">
-        <div class="card mt-4 mb-4" style="height: 70vh; width: 60vh">
-            <div class="card-body">
-                <h5 class="card-title text-center">LOGIN</h5>
-                <form class="text-center">
-                    <div class="mb-3 mt-5">
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email">
-                    </div>
-                    <div class="mb-3">
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Masuk</button>
-                </form>
-                <hr class="mt-5">
-                <p class="text-muted">Hubungi kami apabila menemui kendala teknis melalui kontak berikut
-                </p>
-            </div>
-        </div>
-    </div>
-
-</div>
+@yield('content')
 
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted">
-    <!-- Copyright -->
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2021 Copyright: Universitas PGRI Madiun
+<footer class="text-light p-3 bg-primary">
+    <div class="text-center">
+        Copyright © 2021 Universitas PGRI Madiun
     </div>
-    <!-- Copyright -->
 </footer>
 <!-- Footer -->
 

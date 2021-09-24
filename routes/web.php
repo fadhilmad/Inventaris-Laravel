@@ -16,8 +16,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
+})->name('home');
+
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLogin'])->name('login');
+
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'showLogout']);
+Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+
+Route::group(['middleware' => ['role:admin']], function () {
+
+    Route::get('/admin/dashboard', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
+
 });
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
