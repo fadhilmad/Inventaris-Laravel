@@ -12,8 +12,25 @@
 </head>
 <body>
 
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="d-flex flex-column bd-highlight">
+            <div class="bd-highlight"><a class="navbar-brand">Sistem Informasi Inventaris</a></div>
+            <div class="bd-highlight">Universitas PGRI Madiun</div>
+        </div>
+    </div>
+</nav>
 
-<h1>Hello, world!</h1>
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2021 Copyright:
+        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->
 
 <!-- Optional JavaScript; choose one of the two! -->
 
