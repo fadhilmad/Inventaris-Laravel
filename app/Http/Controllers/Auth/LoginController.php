@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -49,18 +51,36 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/')->with('success', 'Berhasil Logout');
+    }
+
     protected function authenticated(Request $request, $user)
     {
         if ($user->hasRole('admin')){
             return redirect()->route('admin.dashboard')->with('success', 'Berhasil Login!');
         }
 
-        elseif ($user->hasRole('auditee')){
-            return redirect()->route('auditee.dashboard')->with('success', 'Berhasil Login!');
+        elseif ($user->hasRole('tu')){
+            return redirect()->route('tu.dashboard')->with('success', 'Berhasil Login!');
         }
 
-        elseif ($user->hasRole('auditor')){
-            return redirect()->route('auditor.dashboard')->with('success', 'Berhasil Login!');
+        elseif ($user->hasRole('ketua')){
+            return redirect()->route('ketua.dashboard')->with('success', 'Berhasil Login!');
+        }
+
+        elseif ($user->hasRole('wr')){
+            return redirect()->route('wr.dashboard')->with('success', 'Berhasil Login!');
+        }
+
+        elseif ($user->hasRole('inventaris')){
+            return redirect()->route('inventaris.dashboard')->with('success', 'Berhasil Login!');
+        }
+
+        elseif ($user->hasRole('pplp')){
+            return redirect()->route('pplp.dashboard')->with('success', 'Berhasil Login!');
         }
 
         return redirect()->route('home')->with('error', 'Login Gagal');
