@@ -13,7 +13,7 @@ footer {
 
 body{
     color: #002333;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Asap', sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -27,7 +27,15 @@ footer{
     margin-top: auto;
 }
 
+.btn-toggle{
+    text-align: start;
+}
+
 .bg-primary{
+    background-color: #0a253b !important;
+}
+
+.page-item.active .page-link{
     background-color: #0a253b !important;
 }
 
@@ -85,4 +93,10 @@ a.unstyled:focus{
     transform-origin: .5em 50%;
 }
 
+.nav-link.active{
+    background-color: #0a253b !important;
+}
 
+.navbar-active{
+    background-color: #d2f4ea !important;
+}
