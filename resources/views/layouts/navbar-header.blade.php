@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Sistem Informasi Inventaris Unipma</title>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body>
 @include('sweetalert::alert')
 {{--Navbar--}}
 <header class="p-3 bg-primary text-dark">
