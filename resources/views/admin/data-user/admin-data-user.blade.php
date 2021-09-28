@@ -56,7 +56,7 @@
             <div class="container-fluid m-5">
                 <div class="card">
                     <div class="card-body">
-                    <button class="btn btn-sm btn-success mb-2">Tambah User</button>
+                        <a href="{{ route('admin.tambahDataUser') }}"><button class="btn btn-sm btn-success mb-2">Tambah User</button></a>
                         <table id="table1" class="table table-striped">
                             <thead>
                             <tr class="text-center">
@@ -68,13 +68,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="text-center">1</td>
-                                <td>asd</td>
-                                <td>asd</td>
-                                <td>asd</td>
-                                <td>asd</td>
-                            </tr>
+                            @foreach( $user as $v )
+                                <tr class="text-center">
+                                    <td>{{  $loop->iteration  }}</td>
+                                    <td>{{ $v->user_id }}</td>
+                                    <td>{{ $v->name }}</td>
+                                    <td>{{ $v->jabatan }}</td>
+                                    <td>{{ $v->unit_kerja }}</td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

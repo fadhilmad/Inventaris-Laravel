@@ -35,7 +35,9 @@ Route::group(['middleware' => ['guest']], function () {
 Route::group(['middleware' => ['role:admin']], function () {
 
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/data/User', [AdminController::class, 'dataUser'])->name('admin.dataUser');
+
+    Route::get('/admin/data/user', [AdminController::class, 'dataUser'])->name('admin.dataUser');
+    Route::get('/admin/data/user/tambah', [AdminController::class, 'tambahDataUser'])->name('admin.tambahDataUser');
 
     //rekap laporan
     Route::get('/admin/rekap/laporan/prodi', [AdminController::class, 'dataUser'])->name('admin.rekapLaporanProdi');
