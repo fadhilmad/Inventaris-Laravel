@@ -16,21 +16,39 @@
                     </li>
                     <li>
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#orders-collapse" aria-expanded="false">
-                            Rekap Laporan Inventaris
+                                data-bs-target="#rli" aria-expanded="false">Rekap Laporan Inventaris
                         </button>
-                        <div class="collapse" id="orders-collapse">
+                        <div class="collapse" id="rli">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{ route('admin.dataUser') }}" class="nav-link unstyled" aria-current="page">Data User</a></li>
-                                <li><a href="{{ route('admin.dataUser') }}" class="nav-link unstyled" aria-current="page">Data User</a></li>
+                                <li><a href="{{ route('admin.rekapLaporanProdi') }}" class="nav-link unstyled" aria-current="page">Program Studi</a></li>
+                                <li><a href="{{ route('admin.rekapLaporanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
+                                <li><a href="{{ route('admin.rekapLaporanBiro') }}" class="nav-link unstyled" aria-current="page">Biro</a></li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="nav-link unstyled" aria-current="page">Rekap Pengajuan Inventaris</a>
+                        <button class="btn btn-toggle rounded collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#rpi" aria-expanded="false">Rekap Pengajuan Inventaris
+                        </button>
+                        <div class="collapse" id="rpi">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="{{ route('admin.rekapPengajuanProdi') }}" class="nav-link unstyled" aria-current="page">Program Studi</a></li>
+                                <li><a href="{{ route('admin.rekapPengajuanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
+                                <li><a href="{{ route('admin.rekapPengajuanBiro') }}" class="nav-link unstyled" aria-current="page">Biro</a></li>
+                            </ul>
+                        </div>
                     </li>
                     <li>
-                        <a href="#" class="nav-link unstyled" aria-current="page">Rekap Penghapusan Inventaris</a>
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#rpei" aria-expanded="false">Rekap Penghapusan Inventaris
+                        </button>
+                        <div class="collapse" id="rpei">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="{{ route('admin.rekapPenghapusanProdi') }}" class="nav-link unstyled" aria-current="page">Program Studi</a></li>
+                                <li><a href="{{ route('admin.rekapPenghapusanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
+                                <li><a href="{{ route('admin.rekapPenghapusanBiro') }}" class="nav-link unstyled" aria-current="page">Biro</a></li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>

@@ -36,11 +36,15 @@ Route::group(['middleware' => ['role:admin']], function () {
 
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
+    //data user
     Route::get('/admin/data/user', [AdminController::class, 'dataUser'])->name('admin.dataUser');
     Route::get('/admin/data/user/tambah', [AdminController::class, 'tambahDataUser'])->name('admin.tambahDataUser');
 
+    Route::post('/prosTambahUser', [AdminController::class, 'prosTambahUser'])->name('prosTambahUser');
+
+
     //rekap laporan
-    Route::get('/admin/rekap/laporan/prodi', [AdminController::class, 'dataUser'])->name('admin.rekapLaporanProdi');
+    Route::get('/admin/rekap/laporan/prodi', [AdminController::class, 'rekapLaporanProdi'])->name('admin.rekapLaporanProdi');
     Route::get('/admin/rekap/laporan/fakultas', [AdminController::class, 'dataUser'])->name('admin.rekapLaporanFakultas');
     Route::get('/admin/rekap/laporan/biro', [AdminController::class, 'dataUser'])->name('admin.rekapLaporanBiro');
 

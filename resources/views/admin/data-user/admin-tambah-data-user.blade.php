@@ -56,36 +56,32 @@
             <div class="container-fluid m-5">
                 <h4>Tambah Akun User</h4>
                 <hr>
-                <form action="">
+                <form method="post" action="{{route('prosTambahUser')}}">
                     @csrf
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1">
+                        <label for="user_id" class="form-label">User ID</label>
+                        <input name="user_id" value="{{ old('user_id') }}" class="form-control @error('user_id') is-invalid @enderror" type="number" aria-label="default input example" required>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">User ID</label>
-                        <input class="form-control" type="text" aria-label="default input example">
+                        <label for="name" class="form-label">Nama</label>
+                        <input name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" type="text" aria-label="default input example" required>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Nama</label>
-                        <input class="form-control" type="text" aria-label="default input example">
+                        <label for="jabatan" class="form-label">Jabatan</label>
+                        <input name="jabatan" value="{{ old('jabatan') }}" class="form-control @error('jabatan') is-invalid @enderror" type="text" aria-label="default input example" required>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Jabatan</label>
-                        <input class="form-control" type="text" aria-label="default input example">
+                        <label for="unit_kerja" class="form-label">Unit Kerja</label>
+                        <input name="unit_kerja" value="{{ old('unit_kerja') }}" class="form-control @error('unit_kerja') is-invalid @enderror" type="text" aria-label="default input example" required>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Unit Kerja</label>
-                        <input class="form-control" type="text" aria-label="default input example">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Password</label>
-                        <input class="form-control" type="password" aria-label="default input example">
+                        <label for="password" class="form-label">Password</label>
+                        <input name="password" value="{{ old('password') }}" class="form-control @error('password') is-invalid @enderror" type="password" aria-label="default input example" required>
                     </div>
 
                     <div class="d-flex">
-                        <button class="btn btn-success me-2">Simpan</button>
-                        <a href="{{ route('admin.dataUser') }}"><button class="btn btn-secondary">Cancel</button></a>
+                        <button type="submit" class="btn btn-success me-2">Simpan</button>
+                        <a href="{{ route('admin.dataUser') }}"><button type="button" class="btn btn-secondary">Cancel</button></a>
                     </div>
                 </form>
             </div>
