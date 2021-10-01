@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Daftar_inventaris;
 use app\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
@@ -59,6 +61,19 @@ class AdminController extends Controller
 
     public function rekapLaporanProdi()
     {
-        return view('admin.rekap-laporan.admin-rekap-laporan-prodi');
+        $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Prodi'.'%')->get();
+//        dd($daftar);
+
+        return view('admin.rekap-laporan.admin-rekap-laporan-prodi', compact('daftar'));
     }
+
+    public function detailRekapLaporanProdi($id)
+    {
+        $data = Daftar_inventaris::where('id', '=', $id)->get();
+//        dd($data);
+
+        return view('admin.rekap-laporan.detail.detail-prodi', compact('data'));
+    }
+
+
 }

@@ -11,16 +11,16 @@
                     </li>
                     <li>
                         <a class="unstyled" href="{{ route('admin.dataUser') }}">
-                            <button class="btn btn-toggle align-items-center text-dark navbar-active">Data User</button>
+                            <button class="btn btn-toggle align-items-center">Data User</button>
                         </a>
                     </li>
                     <li>
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#rli" aria-expanded="false">Rekap Laporan Inventaris
                         </button>
-                        <div class="collapse" id="rli">
+                        <div class="collapse show" id="rli">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{ route('admin.rekapLaporanProdi') }}" class="nav-link unstyled" aria-current="page">Program Studi</a></li>
+                                <li><a href="{{ route('admin.rekapLaporanProdi') }}" class="nav-link unstyled text-dark navbar-active" aria-current="page">Program Studi - <span class="fw-bold"> Detail </span></a></li>
                                 <li><a href="{{ route('admin.rekapLaporanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
                                 <li><a href="{{ route('admin.rekapLaporanBiro') }}" class="nav-link unstyled" aria-current="page">Biro</a></li>
                             </ul>
@@ -54,36 +54,39 @@
             </div>
 
             <div class="container-fluid m-5">
-                <h4>Tambah Akun User</h4>
-                <hr>
-                <form method="post" action="{{route('prosTambahUser')}}">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="user_id" class="form-label">User ID</label>
-                        <input name="user_id" value="{{ old('user_id') }}" class="form-control @error('user_id') is-invalid @enderror" type="number" aria-label="default input example" required>
+                <div class="card">
+                    <h3 class="text-center m-3">
+                        Rekapitulasi Laporan Inventaris
+                        <span class="fw-bold text-success">{{ $data->first()->unit_kerja }}</span>
+                    </h3>
+                    <hr>
+                    <div class="card-body">
+                        <table id="table2" class="table table-striped">
+                            <thead>
+                            <tr class="text-center">
+                                <th>No</th>
+                                <th>Nama Inventaris</th>
+                                <th>Jumlah</th>
+                                <th>Satuan</th>
+                                <th>Tahun</th>
+                                <th>Keterangan</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach( $data as $v )
+                                <tr class="text-center">
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $v->nama_inventaris }}</td>
+                                    <td>{{ $v->jumlah_inventaris }}</td>
+                                    <td>{{ $v->satuan }}</td>
+                                    <td>{{ $v->tahun }}</td>
+                                    <td>{{ $v->keterangan_inventaris }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Nama</label>
-                        <input name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" type="text" aria-label="default input example" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="jabatan" class="form-label">Jabatan</label>
-                        <input name="jabatan" value="{{ old('jabatan') }}" class="form-control @error('jabatan') is-invalid @enderror" type="text" aria-label="default input example" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="unit_kerja" class="form-label">Unit Kerja</label>
-                        <input name="unit_kerja" value="{{ old('unit_kerja') }}" class="form-control @error('unit_kerja') is-invalid @enderror" type="text" aria-label="default input example" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input name="password" value="{{ old('password') }}" class="form-control @error('password') is-invalid @enderror" type="password" aria-label="default input example" required>
-                    </div>
-
-                    <div class="d-flex">
-                        <button type="submit" class="btn btn-success me-2">Simpan</button>
-                        <a href="{{ route('admin.dataUser') }}"><button type="button" class="btn btn-secondary">Batal</button></a>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>

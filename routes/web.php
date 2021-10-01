@@ -47,6 +47,9 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin/rekap/laporan/prodi', [AdminController::class, 'rekapLaporanProdi'])->name('admin.rekapLaporanProdi');
     Route::get('/admin/rekap/laporan/fakultas', [AdminController::class, 'dataUser'])->name('admin.rekapLaporanFakultas');
     Route::get('/admin/rekap/laporan/biro', [AdminController::class, 'dataUser'])->name('admin.rekapLaporanBiro');
+    //detail
+    Route::get('/admin/rekap/laporan/prodi/{id}/detail', [AdminController::class, 'detailRekapLaporanProdi'])->name('admin.detailRekapLaporanProdi');
+
 
     //rekap pengajuan
     Route::get('/admin/rekap/pengajuan/prodi', [AdminController::class, 'dataUser'])->name('admin.rekapPengajuanProdi');

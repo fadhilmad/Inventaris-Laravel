@@ -118,10 +118,18 @@
 <script>
     $(document).ready(function () {
         $('#table1').DataTable();
-        $('#table2').DataTable();
-        $('#table3').DataTable();
-        $('#table4').DataTable();
     });
+
+    $(document).ready( function () {
+        $('#table2').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                // { extend: 'copy', className: 'btn btn-sm btn-primary' },
+                // { extend: 'excel', className: 'btn btn-sm btn-primary' },
+                { extend: 'pdf', className: 'btn btn-md btn-primary',  },
+            ]
+        } );
+    } );
 </script>
 <!-- Optional JavaScript; choose one of the two! -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

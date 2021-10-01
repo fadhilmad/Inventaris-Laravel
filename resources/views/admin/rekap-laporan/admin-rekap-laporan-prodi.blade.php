@@ -67,11 +67,13 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach( $daftar as $d )
                                 <tr class="text-center">
-                                    <td>1</td>
-                                    <td>Sistem Informasi</td>
-                                    <td><button class="btn btn-sm btn-success">Detail</button></td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $d->unit_kerja }}</td>
+                                    <td><a href="/admin/rekap/laporan/prodi/{{ $d->id }}/detail"><button class="btn btn-sm btn-success">Detail</button></a></td>
                                 </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
