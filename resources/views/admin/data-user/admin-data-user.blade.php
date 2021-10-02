@@ -57,7 +57,7 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="{{ route('admin.tambahDataUser') }}"><button class="btn btn-sm btn-success mb-2">Tambah User</button></a>
-                        <table id="table1" class="table table-striped">
+                        <table id="table1" class="table table-striped display" style="width:100%">
                             <thead>
                             <tr class="text-center">
                                 <th>No</th>

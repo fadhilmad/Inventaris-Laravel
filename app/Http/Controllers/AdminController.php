@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Daftar_inventaris;
+use App\Models\Pengajuan_inventaris;
+use App\Models\Penghapusan_inventaris;
 use app\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -59,6 +61,12 @@ class AdminController extends Controller
         }
     }
 
+    /*
+     *
+     * Rekap Laporan Prodi
+     *
+     */
+
     public function rekapLaporanProdi()
     {
         $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Prodi'.'%')->get();
@@ -75,5 +83,114 @@ class AdminController extends Controller
         return view('admin.rekap-laporan.detail.detail-prodi', compact('data'));
     }
 
+    public function rekapLaporanFakultas()
+    {
+        $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Fakultas'.'%')->get();
+//        dd($daftar);
+
+        return view('admin.rekap-laporan.admin-rekap-laporan-fakultas', compact('daftar'));
+    }
+
+    public function detailRekapLaporanFakultas($id)
+    {
+        $data = Daftar_inventaris::where('id', '=', $id)->get();
+//        dd($data);
+
+        return view('admin.rekap-laporan.detail.detail-fakultas', compact('data'));
+    }
+
+    public function rekapLaporanBiro()
+    {
+        $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Biro'.'%')->get();
+//        dd($daftar);
+
+        return view('admin.rekap-laporan.admin-rekap-laporan-biro', compact('daftar'));
+    }
+
+    public function detailRekapLaporanBiro($id)
+    {
+        $data = Daftar_inventaris::where('id', '=', $id)->get();
+//        dd($data);
+
+        return view('admin.rekap-laporan.detail.detail-biro', compact('data'));
+    }
+
+
+    /*
+     *
+     Rekap pengajuan
+     *
+     */
+
+    public function rekapPengajuanProdi()
+    {
+        $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Prodi'.'%')->get();
+//        dd($daftar);
+
+        return view('admin.rekap-pengajuan.admin-rekap-pengajuan-prodi', compact('daftar'));
+    }
+
+    public function detailRekapPengajuanProdi($id)
+    {
+        $data = Pengajuan_inventaris::where('id', '=', $id)->get();
+//        dd($data);
+
+        return view('admin.rekap-pengajuan.detail.detail-prodi', compact('data'));
+    }
+
+    public function rekapPengajuanFakultas()
+    {
+        $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Fakultas'.'%')->get();
+//        dd($daftar);
+
+        return view('admin.rekap-pengajuan.admin-rekap-pengajuan-fakultas', compact('daftar'));
+    }
+
+    public function detailRekapPengajuanFakultas($id)
+    {
+        $data = Pengajuan_inventaris::where('id', '=', $id)->get();
+//        dd($data);
+
+        return view('admin.rekap-pengajuan.detail.detail-fakultas', compact('data'));
+    }
+
+    public function rekapPengajuanBiro()
+    {
+        $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Biro'.'%')->get();
+//        dd($daftar);
+
+        return view('admin.rekap-pengajuan.admin-rekap-pengajuan-biro', compact('daftar'));
+    }
+
+    public function detailRekapPengajuanBiro($id)
+    {
+        $data = Pengajuan_inventaris::where('id', '=', $id)->get();
+//        dd($data);
+
+        return view('admin.rekap-pengajuan.detail.detail-biro', compact('data'));
+    }
+
+    /*
+     *
+     * Rekap Penghapusan
+     *
+     */
+
+    public function rekapPenghapusanProdi()
+    {
+        $daftar = Penghapusan_inventaris::with('daftar_inventaris')
+            ->get();
+        dd($daftar);
+
+        return view('admin.rekap-penghapusan.admin-rekap-penghapusan-biro', compact('daftar'));
+    }
+
+    public function detailRekapPenghapusanProdi($id)
+    {
+        $data = Penghapusan_inventaris::where('id', '=', $id)->get();
+//        dd($data);
+
+        return view('admin.rekap-penghapusan.detail.detail-biro', compact('data'));
+    }
 
 }

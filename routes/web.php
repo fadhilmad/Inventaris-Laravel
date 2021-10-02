@@ -45,21 +45,30 @@ Route::group(['middleware' => ['role:admin']], function () {
 
     //rekap laporan
     Route::get('/admin/rekap/laporan/prodi', [AdminController::class, 'rekapLaporanProdi'])->name('admin.rekapLaporanProdi');
-    Route::get('/admin/rekap/laporan/fakultas', [AdminController::class, 'dataUser'])->name('admin.rekapLaporanFakultas');
-    Route::get('/admin/rekap/laporan/biro', [AdminController::class, 'dataUser'])->name('admin.rekapLaporanBiro');
+    Route::get('/admin/rekap/laporan/fakultas', [AdminController::class, 'rekapLaporanFakultas'])->name('admin.rekapLaporanFakultas');
+    Route::get('/admin/rekap/laporan/biro', [AdminController::class, 'rekapLaporanBiro'])->name('admin.rekapLaporanBiro');
     //detail
     Route::get('/admin/rekap/laporan/prodi/{id}/detail', [AdminController::class, 'detailRekapLaporanProdi'])->name('admin.detailRekapLaporanProdi');
+    Route::get('/admin/rekap/laporan/fakultas/{id}/detail', [AdminController::class, 'detailRekapLaporanFakultas'])->name('admin.detailRekapLaporanFakultas');
+    Route::get('/admin/rekap/laporan/biro/{id}/detail', [AdminController::class, 'detailRekapLaporanBiro'])->name('admin.detailRekapLaporanBiro');
 
 
     //rekap pengajuan
-    Route::get('/admin/rekap/pengajuan/prodi', [AdminController::class, 'dataUser'])->name('admin.rekapPengajuanProdi');
-    Route::get('/admin/rekap/pengajuan/fakultas', [AdminController::class, 'dataUser'])->name('admin.rekapPengajuanFakultas');
-    Route::get('/admin/rekap/pengajuan/biro', [AdminController::class, 'dataUser'])->name('admin.rekapPengajuanBiro');
+    Route::get('/admin/rekap/pengajuan/prodi', [AdminController::class, 'rekapPengajuanProdi'])->name('admin.rekapPengajuanProdi');
+    Route::get('/admin/rekap/pengajuan/fakultas', [AdminController::class, 'rekapPengajuanFakultas'])->name('admin.rekapPengajuanFakultas');
+    Route::get('/admin/rekap/pengajuan/biro', [AdminController::class, 'rekapPengajuanBiro'])->name('admin.rekapPengajuanBiro');
+    //detail
+    Route::get('/admin/rekap/pengajuan/prodi/{id}/detail', [AdminController::class, 'detailRekapPengajuanProdi'])->name('admin.detailRekapPengajuanProdi');
+    Route::get('/admin/rekap/pengajuan/fakultas/{id}/detail', [AdminController::class, 'detailRekapPengajuanFakultas'])->name('admin.detailRekapPengajuanFakultas');
+    Route::get('/admin/rekap/pengajuan/biro/{id}/detail', [AdminController::class, 'detailRekapPengajuanBiro'])->name('admin.detailRekapPengajuanBiro');
+
 
     //rekap penghapusan
-    Route::get('/admin/rekap/penghapusan/prodi', [AdminController::class, 'dataUser'])->name('admin.rekapPenghapusanProdi');
+    Route::get('/admin/rekap/penghapusan/prodi', [AdminController::class, 'rekapPenghapusanProdi'])->name('admin.rekapPenghapusanProdi');
     Route::get('/admin/rekap/penghapusan/fakultas', [AdminController::class, 'dataUser'])->name('admin.rekapPenghapusanFakultas');
     Route::get('/admin/rekap/penghapusan/biro', [AdminController::class, 'dataUser'])->name('admin.rekapPenghapusanBiro');
+    //detail
+    Route::get('/admin/rekap/penghapusan/prodi/{id}/detail', [AdminController::class, 'detailRekapPengajuanProdi'])->name('admin.detailRekapPenghapusanProdi');
 
 });
 

@@ -52,13 +52,12 @@
                     </li>
                 </ul>
             </div>
-
             <div class="container-fluid m-5">
                 <div class="card">
                     <h3 class="text-center m-3">Rekapitulasi Laporan Inventaris Program Studi</h3>
                     <hr>
                     <div class="card-body">
-                        <table id="table1" class="table table-striped">
+                        <table id="table1" class="table table-striped display" style="width:100%">
                             <thead>
                             <tr class="text-center">
                                 <th>No</th>

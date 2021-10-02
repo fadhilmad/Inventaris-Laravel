@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Daftar_inventaris;
+use App\Models\Pengajuan_inventaris;
 use Illuminate\Database\Seeder;
 
-class daftarInventarisSeeder extends Seeder
+class pengajuanInventarisSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,31 +14,28 @@ class daftarInventarisSeeder extends Seeder
      */
     public function run()
     {
-        $a1 = Daftar_inventaris::create([
+        $a1 = Pengajuan_inventaris::create([
             'unit_kerja' => 'Prodi Sistem Informasi',
             'nama_inventaris' => 'LCD',
             'jumlah_inventaris' => '1',
             'satuan' => 'buah',
-            'tahun' => '2021',
-            'keterangan_inventaris' => 'test',
+            'jenis_pengajuan' => 'Baru',
         ]);
 
-        $a2 = Daftar_inventaris::create([
+        $a2 = Pengajuan_inventaris::create([
             'unit_kerja' => 'Fakultas Teknik',
             'nama_inventaris' => 'Monitor',
             'jumlah_inventaris' => '3',
             'satuan' => 'buah',
-            'tahun' => '2021',
-            'keterangan_inventaris' => 'test2',
+            'jenis_pengajuan' => 'Baru',
         ]);
 
-        $a3 = Daftar_inventaris::create([
+        $a3 = Pengajuan_inventaris::create([
             'unit_kerja' => 'Biro Administrasi',
-            'nama_inventaris' => 'Monitor',
-            'jumlah_inventaris' => '3',
+            'nama_inventaris' => 'Layar',
+            'jumlah_inventaris' => '10',
             'satuan' => 'buah',
-            'tahun' => '2021',
-            'keterangan_inventaris' => 'test2',
+            'jenis_pengajuan' => 'Baru',
         ]);
     }
 }
