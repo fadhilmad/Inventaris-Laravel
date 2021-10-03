@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TuController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -65,24 +66,33 @@ Route::group(['middleware' => ['role:admin']], function () {
 
     //rekap penghapusan
     Route::get('/admin/rekap/penghapusan/prodi', [AdminController::class, 'rekapPenghapusanProdi'])->name('admin.rekapPenghapusanProdi');
-    Route::get('/admin/rekap/penghapusan/fakultas', [AdminController::class, 'dataUser'])->name('admin.rekapPenghapusanFakultas');
-    Route::get('/admin/rekap/penghapusan/biro', [AdminController::class, 'dataUser'])->name('admin.rekapPenghapusanBiro');
-    //detail
-    Route::get('/admin/rekap/penghapusan/prodi/{id}/detail', [AdminController::class, 'detailRekapPengajuanProdi'])->name('admin.detailRekapPenghapusanProdi');
+    Route::get('/admin/rekap/penghapusan/fakultas', [AdminController::class, 'rekapPenghapusanFakultas'])->name('admin.rekapPenghapusanFakultas');
+    Route::get('/admin/rekap/penghapusan/biro', [AdminController::class, 'rekapPenghapusanBiro'])->name('admin.rekapPenghapusanBiro');
 
 });
 
 //tu
 Route::group(['middleware' => ['role:tu']], function () {
 
-    Route::get('/tu/dashboard', [AdminController::class, 'index'])->name('tu.dashboard');
+    Route::get('/tu/dashboard', [TuController::class, 'index'])->name('tu.dashboard');
 
+    //data
+    Route::get('/tu/data', [AdminController::class, 'data'])->name('tu.data');
+    Route::get('/tu/data/tambah', [AdminController::class, 'tambahData'])->name('tu.tambahData');
+
+    //pengajuan
+    Route::get('/tu/data/pengajuan', [AdminController::class, 'dataPengajuan'])->name('tu.dataPengajuan');
+    Route::get('/tu/data/tambah/pengajuan', [AdminController::class, 'tambahDataPengajuan'])->name('tu.tambahDataPengajuan');
+
+    //penghapusan
+    Route::get('/tu/data/penghapusan', [AdminController::class, 'dataPenghapusan'])->name('tu.dataPenghapusan');
+    Route::get('/tu/data/tambah/penghapusan', [AdminController::class, 'tambahDataPenghapusan'])->name('tu.tambahDataPenghapusan');
 });
 
 //ketua
 Route::group(['middleware' => ['role:ketua']], function () {
 
-    Route::get('/ketua/dashboard', [AdminController::class, 'index'])->name('ketua.dashboard');
+    Route::get('/ketua/dashboard', [TuController::class, 'index'])->name('ketua.dashboard');
 
 });
 

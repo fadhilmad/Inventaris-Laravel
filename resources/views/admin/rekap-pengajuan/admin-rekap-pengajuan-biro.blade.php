@@ -54,7 +54,7 @@
             </div>
             <div class="container-fluid m-5">
                 <div class="card">
-                    <h3 class="text-center m-3">Rekapitulasi Laporan Inventaris Fakultas</h3>
+                    <h3 class="text-center m-3">Rekapitulasi Pengajuan Inventaris Biro</h3>
                     <hr>
                     <div class="card-body">
                         <table id="table1" class="table table-striped display " style="width:100%">

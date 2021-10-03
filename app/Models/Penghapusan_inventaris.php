@@ -11,6 +11,6 @@ class Penghapusan_inventaris extends Model
     protected $guarded = ['id'];
 
     public function daftar_inventaris(){
-        return $this->hasOne(Daftar_inventaris::class, 'id', 'id_daftar_inventaris');
+        return $this->belongsTo(Daftar_inventaris::class, 'id_daftar_inventaris', 'id');
     }
 }

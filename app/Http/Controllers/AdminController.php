@@ -7,6 +7,7 @@ use App\Models\Pengajuan_inventaris;
 use App\Models\Penghapusan_inventaris;
 use app\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 
@@ -178,19 +179,39 @@ class AdminController extends Controller
 
     public function rekapPenghapusanProdi()
     {
-        $daftar = Penghapusan_inventaris::with('daftar_inventaris')
-            ->get();
-        dd($daftar);
 
+        $daftar = DB::table('penghapusan_inventaris')
+            ->join('daftar_inventaris', 'penghapusan_inventaris.id_daftar_inventaris', '=', 'daftar_inventaris.id')
+            ->where('daftar_inventaris.unit_kerja',  'LIKE', 'Prodi'.'%')
+            ->select('daftar_inventaris.nama_inventaris','penghapusan_inventaris.jumlah_hapus', 'daftar_inventaris.satuan', 'daftar_inventaris.tahun', 'penghapusan_inventaris.keterangan')
+            ->get();
+//        dd($daftar);
+        return view('admin.rekap-penghapusan.admin-rekap-penghapusan-prodi', compact('daftar'));
+    }
+
+    public function rekapPenghapusanFakultas()
+    {
+
+        $daftar = DB::table('penghapusan_inventaris')
+            ->join('daftar_inventaris', 'penghapusan_inventaris.id_daftar_inventaris', '=', 'daftar_inventaris.id')
+            ->where('daftar_inventaris.unit_kerja',  'LIKE', 'Fakultas'.'%')
+            ->select('daftar_inventaris.nama_inventaris','penghapusan_inventaris.jumlah_hapus', 'daftar_inventaris.satuan', 'daftar_inventaris.tahun', 'penghapusan_inventaris.keterangan')
+            ->get();
+//        dd($daftar);
+        return view('admin.rekap-penghapusan.admin-rekap-penghapusan-fakultas', compact('daftar'));
+    }
+
+    public function rekapPenghapusanBiro()
+    {
+
+        $daftar = DB::table('penghapusan_inventaris')
+            ->join('daftar_inventaris', 'penghapusan_inventaris.id_daftar_inventaris', '=', 'daftar_inventaris.id')
+            ->where('daftar_inventaris.unit_kerja',  'LIKE', 'Biro'.'%')
+            ->select('daftar_inventaris.nama_inventaris','penghapusan_inventaris.jumlah_hapus', 'daftar_inventaris.satuan', 'daftar_inventaris.tahun', 'penghapusan_inventaris.keterangan')
+            ->get();
+//        dd($daftar);
         return view('admin.rekap-penghapusan.admin-rekap-penghapusan-biro', compact('daftar'));
     }
 
-    public function detailRekapPenghapusanProdi($id)
-    {
-        $data = Penghapusan_inventaris::where('id', '=', $id)->get();
-//        dd($data);
-
-        return view('admin.rekap-penghapusan.detail.detail-biro', compact('data'));
-    }
 
 }

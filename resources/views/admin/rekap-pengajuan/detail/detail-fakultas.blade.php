@@ -65,7 +65,7 @@
                 </a>
                 <div class="card">
                     <h3 class="text-center m-3">
-                        Rekapitulasi Laporan Inventaris
+                        Rekapitulasi Pengajuan Inventaris
                         <span class="fw-bold text-success">{{ $data->first()->unit_kerja }}</span>
                     </h3>
                     <hr>
