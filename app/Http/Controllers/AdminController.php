@@ -47,7 +47,7 @@ class AdminController extends Controller
         $user = User::create([
             'user_id' => $request['user_id'],
             'name' => ucwords($request['name']),
-            'jabatan' => $request['jabatan'],
+            'jabatan' => strtolower($request['jabatan']),
             'unit_kerja' => ucwords($request['unit_kerja']),
             'password' => bcrypt($request['password'])
         ]);

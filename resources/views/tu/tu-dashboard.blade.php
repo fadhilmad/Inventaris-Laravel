@@ -1,7 +1,5 @@
 @extends('layouts.navbar-header')
 @section('content')
-    @extends('layouts.navbar-header')
-@section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-start">
             <div class="d-flex flex-column flex-shrink-0 p-3 text-dark bg-white border-end" style="width: 250px;height: 100vh;">
@@ -40,7 +38,6 @@
                         <div class="collapse" id="rphi">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="{{ route('tu.dataPenghapusan') }}" class="nav-link unstyled" aria-current="page">Data</a></li>
-                                <li><a href="{{ route('tu.tambahDataPenghapusan') }}" class="nav-link unstyled" aria-current="page">Tambah Data</a></li>
                             </ul>
                         </div>
                     </li>
@@ -60,6 +57,4 @@
             </div>
         </div>
     </div>
-@endsection
-
 @endsection

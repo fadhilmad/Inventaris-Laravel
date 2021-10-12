@@ -13,4 +13,11 @@ class Penghapusan_inventaris extends Model
     public function daftar_inventaris(){
         return $this->belongsTo(Daftar_inventaris::class, 'id_daftar_inventaris', 'id');
     }
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
 }

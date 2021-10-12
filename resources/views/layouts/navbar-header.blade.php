@@ -7,7 +7,6 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600&display=swap" rel="stylesheet">
@@ -18,6 +17,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- datatables  -->
@@ -28,6 +30,7 @@
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.bootstrap5.min.js"></script>
 
+
     <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
@@ -35,9 +38,21 @@
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
 
+    {{-- date pick--}}
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
     {{--  css  --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap4-toggle/3.6.1/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap4-toggle/3.6.1/bootstrap4-toggle.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.1.1/dist/select2-bootstrap-5-theme.rtl.min.css" />
+
+
     <title>Sistem Informasi Inventaris Unipma</title>
 </head>
 <body>
@@ -75,15 +90,33 @@
                                     <a class="dropdown-item unstyled"
                                        href="{{ route('admin.dashboard') }}">{{ __('Beranda') }}</a>
                                 </li>
-                            @elseif (Auth::user()->hasRole('auditee'))
+                            @elseif (Auth::user()->hasRole('tu'))
 
                                 <li>
                                     <a class="dropdown-item unstyled"
-                                       href="{{ route('auditee.dashboard') }}">{{ __('Beranda') }}</a>
+                                       href="{{ route('tu.dashboard') }}">{{ __('Beranda') }}</a>
                                 </li>
 
-                            @elseif (Auth::user()->hasRole('auditor'))
+                            @elseif (Auth::user()->hasRole('wr'))
 
+                                <li>
+                                    <a class="dropdown-item unstyled"
+                                       href="{{ route('wr.dashboard') }}">{{ __('Beranda') }}</a>
+                                </li>
+
+                            @elseif (Auth::user()->hasRole('inventaris'))
+
+                                <li>
+                                    <a class="dropdown-item unstyled"
+                                       href="{{ route('inventaris.dashboard') }}">{{ __('Beranda') }}</a>
+                                </li>
+
+                            @elseif (Auth::user()->hasRole('pplp'))
+
+                                <li>
+                                    <a class="dropdown-item unstyled"
+                                       href="{{ route('pplp.dashboard') }}">{{ __('Beranda') }}</a>
+                                </li>
 
                             @endif
 
@@ -117,7 +150,132 @@
 </footer>
 <!-- Footer -->
 
+
 <script>
+    $(function() {
+        $('#toggle1').change(function() {
+            var validasi_ketua = $(this).prop('checked') == true ? 1 : 0;
+            var id = $(this).data('id');
+
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                data: {'validasi_ketua': validasi_ketua, 'id': id},
+                url: '/ketua/pengajuan/inventaris/validasi/'+id,
+                success: function(data){
+                    Swal.fire(
+                        'Berhasil!',
+                        'Berhasil Mengubah Data',
+                        'success'
+                    )
+                }
+            });
+        })
+    })
+
+    $(function() {
+        $('#toggle2').change(function() {
+            var validasi_ketua = $(this).prop('checked') == true ? 1 : 0;
+            var id = $(this).data('id');
+            var jumlah_setelah = $('#result').val();
+
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                data: {'validasi_ketua': validasi_ketua, 'id': id, 'jumlah_setelah' : jumlah_setelah},
+                url: '/ketua/penghapusan/inventaris/validasi/'+id+'/'+jumlah_setelah,
+                success: function(data){
+                    Swal.fire(
+                        'Berhasil!',
+                        'Berhasil Mengubah Data',
+                        'success'
+                    )
+                }
+            });
+        })
+    })
+
+    $(function() {
+        $('#toggle3').change(function() {
+            var validasi_wr = $(this).prop('checked') == true ? 1 : 0;
+            var id = $(this).data('id');
+
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                data: {'validasi_wr': validasi_wr, 'id': id},
+                url: '/wr/pengajuan/inventaris/validasi/'+id,
+                success: function(data){
+                    Swal.fire(
+                        'Berhasil!',
+                        'Berhasil Mengubah Data',
+                        'success'
+                    )
+                }
+            });
+        })
+    })
+
+    $(function() {
+        $('#toggle4').change(function() {
+            var validasi_wr = $(this).prop('checked') == true ? 1 : 0;
+            var id = $(this).data('id');
+            var jumlah_setelah = $('#result').val();
+
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                data: {'validasi_wr': validasi_wr, 'id': id, 'jumlah_setelah' : jumlah_setelah},
+                url: '/wr/penghapusan/inventaris/validasi/'+id+'/'+jumlah_setelah,
+                success: function(data){
+                    Swal.fire(
+                        'Berhasil!',
+                        'Berhasil Mengubah Data',
+                        'success'
+                    )
+                }
+            });
+        })
+    })
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        $('.unit_kerja').select2({
+            theme: "bootstrap-5",
+            placeholder: "",
+        });
+        $('.jabatan').select2({
+            theme: "bootstrap-5",
+            placeholder: "",
+        });
+    });
+
+    function calculateAmount(val) {
+        var now = $("#jumlah_ini").val();
+        var total = now - val;
+
+        var print = document.getElementById('jumlah_setelah');
+
+        if (val > now || val < 0 || total < 0){
+            print.value = ('Melebihi jumlah saat ini');
+            $("#tambah-data").attr("disabled", true);
+        }
+        else {
+
+            print.value = total;
+            $("#tambah-data").attr("disabled", false);
+        }
+    };
+
+    $("#datepicker").datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years",
+        autoclose:true //to close picker once year is selected
+    });
+
     $(document).ready(function () {
         $('#table1').DataTable({
             rowReorder: {
@@ -137,13 +295,67 @@
             buttons: [
                 // { extend: 'copy', className: 'btn btn-sm btn-primary' },
                 // { extend: 'excel', className: 'btn btn-sm btn-primary' },
-                { extend: 'pdf', className: 'btn btn-md btn-primary',  },
+                {
+                    extend: 'pdfHtml5',
+                    customize: function(doc) {
+                        doc.styles.tableBodyEven.alignment = 'center';
+                        doc.styles.tableBodyOdd.alignment = 'center';
+                    },
+                  className: 'btn btn-md btn-primary',
+                },
+            ]
+        } );
+    } );
+
+    $(document).ready( function () {
+        $('#table3').DataTable( {
+            dom: 'Bfrtip',
+            rowReorder: {
+                selector: 'td:nth-child(2)'
+            },
+            responsive: true,
+            buttons: [
+                {
+                    extend: 'pdfHtml5',
+                    customize: function(doc) {
+                        doc.styles.tableBodyEven.alignment = 'center';
+                        doc.styles.tableBodyOdd.alignment = 'center';
+                    },
+                    className: 'btn btn-md btn-primary',
+                    exportOptions: {
+                        columns: [0,1,2,3,4,5,6]
+                    }
+                },
+            ]
+        } );
+    } );
+    $(document).ready( function () {
+        $('#table4').DataTable( {
+            dom: 'Bfrtip',
+            rowReorder: {
+                selector: 'td:nth-child(2)'
+            },
+            responsive: true,
+            buttons: [
+                {
+                    extend: 'pdfHtml5',
+                    customize: function(doc) {
+                        doc.styles.tableBodyEven.alignment = 'center';
+                        doc.styles.tableBodyOdd.alignment = 'center';
+                    },
+                    className: 'btn btn-md btn-primary',
+                    exportOptions: {
+                        columns: [0,1,2,3,4,5,6,7]
+                    }
+                },
             ]
         } );
     } );
 </script>
+
 <!-- Optional JavaScript; choose one of the two! -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
 </body>
 </html>

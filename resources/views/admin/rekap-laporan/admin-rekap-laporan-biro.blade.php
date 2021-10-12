@@ -61,7 +61,7 @@
                             <thead>
                             <tr class="text-center">
                                 <th>No</th>
-                                <th>Program Studi</th>
+                                <th>Biro</th>
                                 <th>Aksi</th>
                             </tr>
                             </thead>

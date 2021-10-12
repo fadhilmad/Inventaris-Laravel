@@ -34,7 +34,7 @@
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="{{ route('admin.rekapPengajuanProdi') }}" class="nav-link unstyled " aria-current="page">Program Studi</a></li>
                                 <li><a href="{{ route('admin.rekapPengajuanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
-                                <li><a href="{{ route('admin.rekapPengajuanBiro') }}" class="nav-link unstyled text-dark navbar-active" aria-current="page">Biro - <span class="fw-bold">Detail</span></a></li>
+                                <li><a href="{{ route('admin.rekapPengajuanBiro') }}" class="nav-link unstyled text-dark navbar-active" aria-current="page">Biro</a></li>
                             </ul>
                         </div>
                     </li>
@@ -92,13 +92,20 @@
                                     <td>{{ $v->satuan }}</td>
                                     <td>{{ $v->jenis_pengajuan }}</td>
                                     <td>{{ $v->created_at->format('d-M-Y') }}</td>
-                                    <td>@if( $v->validasi_ketua == '1' )
-                                            Tervalidasi
+                                    <td>
+                                        @if( $v->validasi_ketua == '1' )
+                                            <span class="badge rounded-pill bg-success">Tervalidasi</span>
                                         @else
-                                            Belum Valid
+                                            <span class="badge rounded-pill bg-danger">Belum Valid</span>
                                         @endif
                                     </td>
-                                    <td>{{ $v->validasi_wr }}</td>
+                                    <td>
+                                        @if( $v->validasi_wr == '1' )
+                                            <span class="badge rounded-pill bg-success">Tervalidasi</span>
+                                        @else
+                                            <span class="badge rounded-pill bg-danger">Belum Valid</span>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

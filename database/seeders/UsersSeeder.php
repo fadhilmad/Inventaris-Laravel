@@ -28,7 +28,7 @@ class UsersSeeder extends Seeder
             'name' => 'tu',
             'user_id' => '1705102002',
             'jabatan' => 'tu',
-            'unit_kerja' => 'tu',
+            'unit_kerja' => 'Prodi Sistem Informasi',
             'password' => bcrypt('user123')
         ]);
 
@@ -38,7 +38,7 @@ class UsersSeeder extends Seeder
             'name' => 'ketua',
             'user_id' => '1705102003',
             'jabatan' => 'kaprodi',
-            'unit_kerja' => 'kaprodi',
+            'unit_kerja' => 'Prodi Sistem Informasi',
             'password' => bcrypt('user123')
         ]);
 

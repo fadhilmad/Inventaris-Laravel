@@ -17,8 +17,11 @@ class CreatePenghapusanInventarisTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_daftar_inventaris');
             $table->integer('jumlah_hapus');
+            $table->integer('jumlah_setelah');
             $table->string('keterangan');
+            $table->string('satuan');
             $table->smallInteger('validasi_ketua')->default('0');
+            $table->smallInteger('validasi_wr')->default('0');
             $table->foreign('id_daftar_inventaris')->references('id')->on('daftar_inventaris')->onDelete('cascade');
             $table->timestamps();
         });

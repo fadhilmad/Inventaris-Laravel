@@ -93,12 +93,18 @@
                                     <td>{{ $v->jenis_pengajuan }}</td>
                                     <td>{{ $v->created_at->format('d-M-Y') }}</td>
                                     <td>@if( $v->validasi_ketua == '1' )
-                                            Tervalidasi
+                                            <span class="badge rounded-pill bg-success">Tervalidasi</span>
                                         @else
-                                            Belum Valid
+                                            <span class="badge rounded-pill bg-danger">Belum Valid</span>
                                         @endif
                                     </td>
-                                    <td>{{ $v->validasi_wr }}</td>
+                                    <td>
+                                        @if( $v->validasi_wr == '1' )
+                                            <span class="badge rounded-pill bg-success">Tervalidasi</span>
+                                        @else
+                                            <span class="badge rounded-pill bg-danger">Belum Valid</span>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
