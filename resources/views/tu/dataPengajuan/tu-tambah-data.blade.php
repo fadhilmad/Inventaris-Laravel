@@ -110,8 +110,8 @@
                                 <label for="jenis_pengajuan" class="form-label">Kondisi</label>
                                 <input name="jenis_pengajuan" list="kondisi" value="{{ old('jenis_pengajuan') }}" class="form-control text-capitalize @error('jenis_pengajuan') is-invalid @enderror" type="text" aria-label="default input example" autocomplete="off" required>
                                 <datalist id="kondisi">
-                                    <option value="Baik">
-                                    <option value="Buruk">
+                                    <option value="Baru">
+                                    <option value="Lama">
                                 </datalist>
                                 @error('jenis_pengajuan')
                                 <div id="jenis_pengajuan" class="invalid-feedback">

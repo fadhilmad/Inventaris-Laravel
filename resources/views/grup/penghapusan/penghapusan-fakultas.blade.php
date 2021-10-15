@@ -18,7 +18,7 @@
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="{{ route('pplp.laporanProdi') }}" class="nav-link unstyled  " aria-current="page">Program Studi</a></li>
                                     <li><a href="{{ route('pplp.laporanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
-                                    <li><a href="{{ route('pplp.laporanBiro') }}" class="nav-link unstyled" aria-current="page">Biro</a></li>
+                                    <li><a href="{{ route('pplp.laporanBiro') }}" class="nav-link unstyled" aria-current="page">Biro & Unit</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -30,7 +30,7 @@
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="{{ route('pplp.penghapusanProdi') }}" class="nav-link unstyled" aria-current="page">Program Studi</a></li>
                                     <li><a href="{{ route('pplp.penghapusanFakultas') }}" class="nav-link unstyled  text-dark navbar-active " aria-current="page">Fakultas</a></li>
-                                    <li><a href="{{ route('pplp.penghapusanBiro') }}" class="nav-link unstyled" aria-current="page">Biro</a></li>
+                                    <li><a href="{{ route('pplp.penghapusanBiro') }}" class="nav-link unstyled" aria-current="page">Biro & Unit</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -48,7 +48,7 @@
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="{{ route('inventaris.laporanProdi') }}" class="nav-link unstyled  " aria-current="page">Program Studi</a></li>
                                     <li><a href="{{ route('inventaris.laporanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
-                                    <li><a href="{{ route('inventaris.laporanBiro') }}" class="nav-link unstyled" aria-current="page">Biro</a></li>
+                                    <li><a href="{{ route('inventaris.laporanBiro') }}" class="nav-link unstyled" aria-current="page">Biro & Unit</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -60,7 +60,7 @@
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="{{ route('inventaris.penghapusanProdi') }}" class="nav-link unstyled" aria-current="page">Program Studi</a></li>
                                     <li><a href="{{ route('inventaris.penghapusanFakultas') }}" class="nav-link unstyled  text-dark navbar-active " aria-current="page">Fakultas</a></li>
-                                    <li><a href="{{ route('inventaris.penghapusanBiro') }}" class="nav-link unstyled" aria-current="page">Biro</a></li>
+                                    <li><a href="{{ route('inventaris.penghapusanBiro') }}" class="nav-link unstyled" aria-current="page">Biro & Unit</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -77,7 +77,7 @@
                             <thead>
                             <tr class="text-center">
                                 <th>No</th>
-                                <th>Fakultas</th>
+                                <th>Unit Kerja</th>
                                 <th>Aksi</th>
                             </tr>
                             </thead>

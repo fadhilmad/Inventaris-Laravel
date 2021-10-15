@@ -48,7 +48,10 @@ class PplpController extends Controller
 
     public function laporanBiro()
     {
-        $data = Daftar_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Biro'.'%')->get();
+        $data = Daftar_inventaris::orderBy('unit_kerja', 'asc')
+            ->where('unit_kerja', 'LIKE', 'Biro'.'%')
+            ->orWhere('unit_kerja', 'LIKE', 'Unit'.'%')
+            ->get();
         return view('grup.laporan.laporan-biro', compact('data'));
     }
 
@@ -123,6 +126,7 @@ class PplpController extends Controller
         $data = DB::table('penghapusan_inventaris')
             ->join('daftar_inventaris', 'penghapusan_inventaris.id_daftar_inventaris', '=', 'daftar_inventaris.id')
             ->where('daftar_inventaris.unit_kerja', 'LIKE', 'Biro'.'%')
+            ->orWhere('daftar_inventaris.unit_kerja', 'LIKE', 'Unit'.'%')
             ->select('penghapusan_inventaris.id','daftar_inventaris.unit_kerja')
             ->get();
 

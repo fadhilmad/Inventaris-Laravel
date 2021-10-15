@@ -121,7 +121,10 @@ class WrController extends Controller
 
     public function pengajuanBiro()
     {
-        $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Biro'.'%')->get();
+        $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')
+            ->where('unit_kerja', 'LIKE', 'Biro'.'%')
+            ->orWhere('unit_kerja', 'LIKE', 'Unit'.'%')
+            ->get();
 //        dd($daftar);
 
         return view('wr.pengajuan.pengajuan-biro', compact('daftar'));
@@ -214,6 +217,7 @@ class WrController extends Controller
         $daftar = DB::table('penghapusan_inventaris')
             ->join('daftar_inventaris', 'penghapusan_inventaris.id_daftar_inventaris', '=', 'daftar_inventaris.id')
             ->where('daftar_inventaris.unit_kerja', 'LIKE', 'Biro'.'%')
+            ->orWhere('daftar_inventaris.unit_kerja', 'LIKE', 'Unit'.'%')
             ->select('penghapusan_inventaris.id','daftar_inventaris.unit_kerja')
             ->get();
 

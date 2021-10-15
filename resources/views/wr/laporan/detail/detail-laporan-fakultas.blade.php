@@ -17,7 +17,7 @@
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="{{ route('wr.laporanProdi') }}" class="nav-link unstyled " aria-current="page">Program Studi</a></li>
                                 <li><a href="{{ route('wr.laporanFakultas') }}" class="nav-link unstyled text-dark navbar-active " aria-current="page">Fakultas - <span class="fw-bold">Detail</span></a></li>
-                                <li><a href="{{ route('wr.laporanBiro') }}" class="nav-link unstyled" aria-current="page">Biro</a></li>
+                                <li><a href="{{ route('wr.laporanBiro') }}" class="nav-link unstyled" aria-current="page">Biro & Unit</a></li>
                             </ul>
                         </div>
                     </li>
@@ -29,7 +29,7 @@
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="{{ route('wr.pengajuanProdi') }}" class="nav-link unstyled" aria-current="page">Program Studi</a></li>
                                 <li><a href="{{ route('wr.pengajuanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
-                                <li><a href="{{ route('wr.pengajuanBiro') }}" class="nav-link unstyled" aria-current="page">Biro</a></li>
+                                <li><a href="{{ route('wr.pengajuanBiro') }}" class="nav-link unstyled" aria-current="page">Biro & Unit</a></li>
                             </ul>
                         </div>
                     </li>
@@ -41,7 +41,7 @@
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="{{ route('wr.penghapusanProdi') }}" class="nav-link unstyled" aria-current="page">Program Studi</a></li>
                                 <li><a href="{{ route('wr.penghapusanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
-                                <li><a href="{{ route('wr.penghapusanBiro') }}" class="nav-link unstyled" aria-current="page">Biro</a></li>
+                                <li><a href="{{ route('wr.penghapusanBiro') }}" class="nav-link unstyled" aria-current="page">Biro & Unit</a></li>
                             </ul>
                         </div>
                     </li>

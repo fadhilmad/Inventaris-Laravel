@@ -22,7 +22,7 @@
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="{{ route('admin.rekapLaporanProdi') }}" class="nav-link unstyled " aria-current="page">Program Studi</a></li>
                                 <li><a href="{{ route('admin.rekapLaporanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
-                                <li><a href="{{ route('admin.rekapLaporanBiro') }}" class="nav-link unstyled text-dark navbar-active" aria-current="page">Biro</a></li>
+                                <li><a href="{{ route('admin.rekapLaporanBiro') }}" class="nav-link unstyled text-dark navbar-active" aria-current="page">Biro & Unit</a></li>
                             </ul>
                         </div>
                     </li>
@@ -34,7 +34,7 @@
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="{{ route('admin.rekapPengajuanProdi') }}" class="nav-link unstyled" aria-current="page">Program Studi</a></li>
                                 <li><a href="{{ route('admin.rekapPengajuanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
-                                <li><a href="{{ route('admin.rekapPengajuanBiro') }}" class="nav-link unstyled" aria-current="page">Biro</a></li>
+                                <li><a href="{{ route('admin.rekapPengajuanBiro') }}" class="nav-link unstyled" aria-current="page">Biro & Unit</a></li>
                             </ul>
                         </div>
                     </li>
@@ -46,7 +46,7 @@
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="{{ route('admin.rekapPenghapusanProdi') }}" class="nav-link unstyled" aria-current="page">Program Studi</a></li>
                                 <li><a href="{{ route('admin.rekapPenghapusanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
-                                <li><a href="{{ route('admin.rekapPenghapusanBiro') }}" class="nav-link unstyled" aria-current="page">Biro</a></li>
+                                <li><a href="{{ route('admin.rekapPenghapusanBiro') }}" class="nav-link unstyled" aria-current="page">Biro & Unit</a></li>
                             </ul>
                         </div>
                     </li>
@@ -54,14 +54,14 @@
             </div>
             <div class="container-fluid m-5">
                 <div class="card">
-                    <h3 class="text-center m-3">Rekapitulasi Laporan Inventaris Biro</h3>
+                    <h3 class="text-center m-3">Rekapitulasi Laporan Inventaris Biro & Unit</h3>
                     <hr>
                     <div class="card-body">
                         <table id="table1" class="table table-striped display " style="width:100%">
                             <thead>
                             <tr class="text-center">
                                 <th>No</th>
-                                <th>Biro</th>
+                                <th>Unit Kerja</th>
                                 <th>Aksi</th>
                             </tr>
                             </thead>

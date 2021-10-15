@@ -102,7 +102,10 @@ class AdminController extends Controller
 
     public function rekapLaporanBiro()
     {
-        $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Biro'.'%')->get();
+        $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')
+            ->where('unit_kerja', 'LIKE', 'Biro'.'%')
+            ->orWhere('unit_kerja', 'LIKE', 'Unit'.'%')
+            ->get();
 //        dd($daftar);
 
         return view('admin.rekap-laporan.admin-rekap-laporan-biro', compact('daftar'));
@@ -141,7 +144,8 @@ class AdminController extends Controller
 
     public function rekapPengajuanFakultas()
     {
-        $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Fakultas'.'%')->get();
+        $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')
+            ->where('unit_kerja', 'LIKE', 'Fakultas'.'%')->get();
 //        dd($daftar);
 
         return view('admin.rekap-pengajuan.admin-rekap-pengajuan-fakultas', compact('daftar'));
@@ -157,7 +161,10 @@ class AdminController extends Controller
 
     public function rekapPengajuanBiro()
     {
-        $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Biro'.'%')->get();
+        $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')
+            ->where('unit_kerja', 'LIKE', 'Biro'.'%')
+            ->orWhere('unit_kerja', 'LIKE', 'Unit'.'%')
+            ->get();
 //        dd($daftar);
 
         return view('admin.rekap-pengajuan.admin-rekap-pengajuan-biro', compact('daftar'));
@@ -207,6 +214,7 @@ class AdminController extends Controller
         $daftar = DB::table('penghapusan_inventaris')
             ->join('daftar_inventaris', 'penghapusan_inventaris.id_daftar_inventaris', '=', 'daftar_inventaris.id')
             ->where('daftar_inventaris.unit_kerja',  'LIKE', 'Biro'.'%')
+            ->orWhere('daftar_inventaris.unit_kerja',  'LIKE', 'Unit'.'%')
             ->select('daftar_inventaris.nama_inventaris','penghapusan_inventaris.jumlah_hapus', 'daftar_inventaris.satuan', 'daftar_inventaris.tahun', 'penghapusan_inventaris.keterangan')
             ->get();
 //        dd($daftar);

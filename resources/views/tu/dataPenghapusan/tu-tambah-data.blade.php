@@ -74,7 +74,7 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="jumlah_sebelum" class="form-label">Jumlah saat ini</label>
+                                <label for="jumlah_sebelum" class="form-label">Total inventaris saat ini</label>
                                 <input name="jumlah_sebelum" id="jumlah_ini" value="{{ $data->jumlah_inventaris }}"  class="form-control text-capitalize @error('jumlah_sebelum') is-invalid @enderror" type="text" aria-label="default input example" autocomplete="off" required readonly >
                                 @error('jumlah_sebelum')
                                 <div id="satuan" class="invalid-feedback">
@@ -84,7 +84,7 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <label for="jumlah_hapus" class="form-label">Jumlah Hapus</label>
+                                    <label for="jumlah_hapus" class="form-label">Jumlah yang akan dihapus</label>
                                     <input name="jumlah_hapus" id="jumlah_hapus" onchange="calculateAmount(this.value)" class="form-control text-capitalize @error('jumlah_hapus') is-invalid @enderror" type="text" aria-label="default input example" autocomplete="off" required >
                                     @error('jumlah_hapus')
                                     <div id="satuan" class="invalid-feedback">
@@ -102,7 +102,7 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="jumlah_setelah" class="form-label">Jumlah setelah dihapus</label>
+                                    <label for="jumlah_setelah" class="form-label">Total Inventaris setelah dihapus</label>
                                     <input name="jumlah_setelah" id="jumlah_setelah" class="form-control text-capitalize @error('jumlah_setelah') is-invalid @enderror" type="text" aria-label="default input example" autocomplete="off" required readonly >
                                     @error('jumlah_setelah')
                                     <div id="satuan" class="invalid-feedback">
@@ -111,8 +111,9 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="keterangan" class="form-label">Kondisi</label>
-                                    <input name="keterangan" value="{{ $data->keterangan_inventaris }}"  class="form-control text-capitalize @error('keterangan') is-invalid @enderror" type="text" aria-label="default input example" autocomplete="off" required readonly >
+                                    <label for="keterangan" class="form-label">Keterangan</label>
+{{--                                    <input name="keterangan" value="{{ $data->keterangan_inventaris }}"  class="form-control text-capitalize @error('keterangan') is-invalid @enderror" type="text" aria-label="default input example" autocomplete="off" required readonly >--}}
+                                    <textarea name="keterangan" class="form-control @error('keterangan') is-invalid @enderror" id="exampleFormControlTextarea1" rows="3"  required></textarea>
                                     @error('keterangan')
                                     <div id="satuan" class="invalid-feedback">
                                         {{ $message }}
