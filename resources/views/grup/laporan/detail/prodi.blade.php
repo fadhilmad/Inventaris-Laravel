@@ -14,7 +14,7 @@
                             <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                     data-bs-target="#rli" aria-expanded="false">Laporan Inventaris
                             </button>
-                            <div class="collapse " id="rli">
+                            <div class="collapse show" id="rli">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="{{ route('pplp.laporanProdi') }}" class="nav-link unstyled text-dark navbar-active" aria-current="page">Program Studi - <span class="fw-bold">Detail</span></a></li>
                                     <li><a href="{{ route('pplp.laporanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
@@ -26,7 +26,7 @@
                             <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                     data-bs-target="#rpei" aria-expanded="false">Penghapusan Inventaris
                             </button>
-                            <div class="collapse show" id="rpei">
+                            <div class="collapse " id="rpei">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="{{ route('pplp.penghapusanProdi') }}" class="nav-link unstyled" aria-current="page">Program Studi</a></li>
                                     <li><a href="{{ route('pplp.penghapusanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
@@ -44,7 +44,7 @@
                             <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                     data-bs-target="#rli" aria-expanded="false">Laporan Inventaris
                             </button>
-                            <div class="collapse " id="rli">
+                            <div class="collapse show" id="rli">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="{{ route('inventaris.laporanProdi') }}" class="nav-link unstyled text-dark navbar-active" aria-current="page">Program Studi - <span class="fw-bold">Detail</span></a></li>
                                     <li><a href="{{ route('inventaris.laporanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
@@ -56,7 +56,7 @@
                             <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                     data-bs-target="#rpei" aria-expanded="false">Penghapusan Inventaris
                             </button>
-                            <div class="collapse show" id="rpei">
+                            <div class="collapse " id="rpei">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="{{ route('inventaris.penghapusanProdi') }}" class="nav-link unstyled " aria-current="page">Program Studi</a></li>
                                     <li><a href="{{ route('inventaris.penghapusanFakultas') }}" class="nav-link unstyled " aria-current="page">Fakultas</a></li>

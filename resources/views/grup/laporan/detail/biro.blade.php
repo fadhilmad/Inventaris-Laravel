@@ -47,7 +47,7 @@
                             <div class="collapse show" id="rli">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href="{{ route('inventaris.laporanProdi') }}" class="nav-link unstyled" aria-current="page">Program Studi</a></li>
-                                    <li><a href="{{ route('inventaris.laporanFakultas') }}" class="nav-link " aria-current="page">Fakultas</a></li>
+                                    <li><a href="{{ route('inventaris.laporanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
                                     <li><a href="{{ route('inventaris.laporanBiro') }}" class="nav-link unstyled unstyled text-dark navbar-active " aria-current="page">Biro & Unit - <span class="fw-bold">Detail</span></a></li>
                                 </ul>
                             </div>

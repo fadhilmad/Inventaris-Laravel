@@ -16,7 +16,7 @@
                             </button>
                             <div class="collapse show" id="rli">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="{{ route('pplp.laporanProdi') }}" class="nav-link unstyled  text-dark navbar-active  " aria-current="page">Program Studi</a></li>
+                                    <li><a href="{{ route('pplp.laporanProdi') }}" class="nav-link unstyled  text-dark navbar-active" aria-current="page">Program Studi</a></li>
                                     <li><a href="{{ route('pplp.laporanFakultas') }}" class="nav-link unstyled" aria-current="page">Fakultas</a></li>
                                     <li><a href="{{ route('pplp.laporanBiro') }}" class="nav-link unstyled" aria-current="page">Biro & Unit</a></li>
                                 </ul>
@@ -86,7 +86,11 @@
                                 <tr class="text-center">
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $d->unit_kerja }}</td>
-                                    <td><a href="/inventaris/laporan/prodi/{{ $d->id }}/detail"><button class="btn btn-sm btn-success">Detail</button></a></td>
+                                    @if(Auth::user()->hasRole('pplp'))
+                                        <td><a href="/pplp/laporan/prodi/{{ $d->unit_kerja }}/detail"><button class="btn btn-sm btn-success">Detail</button></a></td>
+                                    @elseif(Auth::user()->hasRole('inventaris'))
+                                        <td><a href="/inventaris/laporan/prodi/{{ $d->unit_kerja }}/detail"><button class="btn btn-sm btn-success">Detail</button></a></td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>

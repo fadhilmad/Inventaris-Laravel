@@ -89,7 +89,7 @@
                                 <th>Jumlah Awal</th>
                                 <th>Jumlah Hapus</th>
                                 <th>Tahun Perolehan</th>
-                                <th>Validasi Kaprodi</th>
+                                <th>Validasi Ketua Unit Kerja</th>
                                 <th>Validasi WR2</th>
                                 <th>Tanggal Pengajuan</th>
                             </tr>

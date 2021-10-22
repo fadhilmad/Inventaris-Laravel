@@ -70,7 +70,9 @@ class AdminController extends Controller
 
     public function rekapLaporanProdi()
     {
-        $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Prodi'.'%')->get();
+        $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')
+            ->groupBy('unit_kerja')
+            ->where('unit_kerja', 'LIKE', 'Prodi'.'%')->get();
 //        dd($daftar);
 
         return view('admin.rekap-laporan.admin-rekap-laporan-prodi', compact('daftar'));
@@ -78,7 +80,7 @@ class AdminController extends Controller
 
     public function detailRekapLaporanProdi($id)
     {
-        $data = Daftar_inventaris::where('id', '=', $id)->get();
+        $data = Daftar_inventaris::where('unit_kerja', '=', $id)->get();
 //        dd($data);
 
         return view('admin.rekap-laporan.detail.detail-prodi', compact('data'));
@@ -86,7 +88,9 @@ class AdminController extends Controller
 
     public function rekapLaporanFakultas()
     {
-        $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Fakultas'.'%')->get();
+        $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')
+            ->groupBy('unit_kerja')
+            ->where('unit_kerja', 'LIKE', 'Fakultas'.'%')->get();
 //        dd($daftar);
 
         return view('admin.rekap-laporan.admin-rekap-laporan-fakultas', compact('daftar'));
@@ -94,7 +98,7 @@ class AdminController extends Controller
 
     public function detailRekapLaporanFakultas($id)
     {
-        $data = Daftar_inventaris::where('id', '=', $id)->get();
+        $data = Daftar_inventaris::where('unit_kerja', '=', $id)->get();
 //        dd($data);
 
         return view('admin.rekap-laporan.detail.detail-fakultas', compact('data'));
@@ -103,6 +107,7 @@ class AdminController extends Controller
     public function rekapLaporanBiro()
     {
         $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')
+            ->groupBy('unit_kerja')
             ->where('unit_kerja', 'LIKE', 'Biro'.'%')
             ->orWhere('unit_kerja', 'LIKE', 'Unit'.'%')
             ->get();
@@ -113,7 +118,7 @@ class AdminController extends Controller
 
     public function detailRekapLaporanBiro($id)
     {
-        $data = Daftar_inventaris::where('id', '=', $id)->get();
+        $data = Daftar_inventaris::where('unit_kerja', '=', $id)->get();
 //        dd($data);
 
         return view('admin.rekap-laporan.detail.detail-biro', compact('data'));
@@ -128,7 +133,9 @@ class AdminController extends Controller
 
     public function rekapPengajuanProdi()
     {
-        $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Prodi'.'%')->get();
+        $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')
+            ->groupBy('unit_kerja')
+            ->where('unit_kerja', 'LIKE', 'Prodi'.'%')->get();
 //        dd($daftar);
 
         return view('admin.rekap-pengajuan.admin-rekap-pengajuan-prodi', compact('daftar'));
@@ -136,7 +143,7 @@ class AdminController extends Controller
 
     public function detailRekapPengajuanProdi($id)
     {
-        $data = Pengajuan_inventaris::where('id', '=', $id)->get();
+        $data = Pengajuan_inventaris::where('unit_kerja', '=', $id)->get();
 //        dd($data);
 
         return view('admin.rekap-pengajuan.detail.detail-prodi', compact('data'));
@@ -145,6 +152,7 @@ class AdminController extends Controller
     public function rekapPengajuanFakultas()
     {
         $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')
+            ->groupBy('unit_kerja')
             ->where('unit_kerja', 'LIKE', 'Fakultas'.'%')->get();
 //        dd($daftar);
 
@@ -153,7 +161,7 @@ class AdminController extends Controller
 
     public function detailRekapPengajuanFakultas($id)
     {
-        $data = Pengajuan_inventaris::where('id', '=', $id)->get();
+        $data = Pengajuan_inventaris::where('unit_kerja', '=', $id)->get();
 //        dd($data);
 
         return view('admin.rekap-pengajuan.detail.detail-fakultas', compact('data'));
@@ -162,6 +170,7 @@ class AdminController extends Controller
     public function rekapPengajuanBiro()
     {
         $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')
+            ->groupBy('unit_kerja')
             ->where('unit_kerja', 'LIKE', 'Biro'.'%')
             ->orWhere('unit_kerja', 'LIKE', 'Unit'.'%')
             ->get();
@@ -172,7 +181,7 @@ class AdminController extends Controller
 
     public function detailRekapPengajuanBiro($id)
     {
-        $data = Pengajuan_inventaris::where('id', '=', $id)->get();
+        $data = Pengajuan_inventaris::where('unit_kerja', '=', $id)->get();
 //        dd($data);
 
         return view('admin.rekap-pengajuan.detail.detail-biro', compact('data'));

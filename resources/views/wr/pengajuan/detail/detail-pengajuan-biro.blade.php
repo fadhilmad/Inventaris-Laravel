@@ -73,7 +73,7 @@
                                 <th>Jumlah</th>
                                 <th>Jenis Pengajuan</th>
                                 <th>Tanggap Pengajuan</th>
-                                <th>Validasi Kaprodi</th>
+                                <th>Validasi Ketua Unit Kerja</th>
                                 <th hidden>Validasi WR 2</th>
                                 <th>Validasi WR 2</th>
                             </tr>

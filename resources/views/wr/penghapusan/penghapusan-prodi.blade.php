@@ -66,7 +66,7 @@
                                 <tr class="text-center">
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $d->unit_kerja }}</td>
-                                    <td><a href="/wr/penghapusan/prodi/{{ $d->id }}/detail"><button class="btn btn-sm btn-success">Detail</button></a></td>
+                                    <td><a href="/wr/penghapusan/prodi/{{ $d->unit_kerja }}/detail"><button class="btn btn-sm btn-success">Detail</button></a></td>
                                 </tr>
                             @endforeach
                             </tbody>

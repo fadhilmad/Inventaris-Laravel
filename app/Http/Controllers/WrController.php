@@ -24,7 +24,9 @@ class WrController extends Controller
 
     public function LaporanProdi()
     {
-        $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Prodi'.'%')->get();
+        $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')
+            ->groupBy('unit_kerja')
+            ->where('unit_kerja', 'LIKE', 'Prodi'.'%')->get();
 //        dd($daftar);
 
         return view('wr.laporan.laporan-prodi', compact('daftar'));
@@ -32,7 +34,7 @@ class WrController extends Controller
 
     public function detailLaporanProdi($id)
     {
-        $data = Daftar_inventaris::where('id', '=', $id)->get();
+        $data = Daftar_inventaris::where('unit_kerja', '=', $id)->get();
 //        dd($data);
 
         return view('wr.laporan.detail.detail-laporan-prodi', compact('data'));
@@ -45,7 +47,9 @@ class WrController extends Controller
 
     public function LaporanFakultas()
     {
-        $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Fakultas'.'%')->get();
+        $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')
+            ->groupBy('unit_kerja')
+            ->where('unit_kerja', 'LIKE', 'Fakultas'.'%')->get();
 //        dd($daftar);
 
         return view('wr.laporan.laporan-fakultas', compact('daftar'));
@@ -53,7 +57,7 @@ class WrController extends Controller
 
     public function detailLaporanFakultas($id)
     {
-        $data = Daftar_inventaris::where('id', '=', $id)->get();
+        $data = Daftar_inventaris::where('unit_kerja', '=', $id)->get();
 //        dd($data);
 
         return view('wr.laporan.detail.detail-laporan-fakultas', compact('data'));
@@ -66,7 +70,9 @@ class WrController extends Controller
 
     public function LaporanBiro()
     {
-        $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Biro'.'%')->get();
+        $daftar = Daftar_inventaris::orderBy('unit_kerja', 'asc')
+            ->groupBy('unit_kerja')
+            ->where('unit_kerja', 'LIKE', 'Biro'.'%')->get();
 //        dd($daftar);
 
         return view('wr.laporan.laporan-biro', compact('daftar'));
@@ -74,7 +80,7 @@ class WrController extends Controller
 
     public function detailLaporanBiro($id)
     {
-        $data = Daftar_inventaris::where('id', '=', $id)->get();
+        $data = Daftar_inventaris::where('unit_kerja', '=', $id)->get();
 //        dd($data);
 
         return view('wr.laporan.detail.detail-laporan-biro', compact('data'));
@@ -89,7 +95,9 @@ class WrController extends Controller
 
     public function pengajuanProdi()
     {
-        $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Prodi'.'%')->get();
+        $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')
+            ->groupBy('unit_kerja')
+            ->where('unit_kerja', 'LIKE', 'Prodi'.'%')->get();
 //        dd($daftar);
 
         return view('wr.pengajuan.pengajuan-prodi', compact('daftar'));
@@ -97,7 +105,7 @@ class WrController extends Controller
 
     public function detailPengajuanProdi($id)
     {
-        $data = Pengajuan_inventaris::where('id', '=', $id)->get();
+        $data = Pengajuan_inventaris::where('unit_kerja', '=', $id)->get();
 //        dd($data);
 
         return view('wr.pengajuan.detail.detail-pengajuan-prodi', compact('data'));
@@ -105,7 +113,9 @@ class WrController extends Controller
 
     public function pengajuanFakultas()
     {
-        $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')->where('unit_kerja', 'LIKE', 'Fakultas'.'%')->get();
+        $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')
+            ->groupBy('unit_kerja')
+            ->where('unit_kerja', 'LIKE', 'Fakultas'.'%')->get();
 //        dd($daftar);
 
         return view('wr.pengajuan.pengajuan-fakultas', compact('daftar'));
@@ -113,7 +123,7 @@ class WrController extends Controller
 
     public function detailPengajuanFakultas($id)
     {
-        $data = Pengajuan_inventaris::where('id', '=', $id)->get();
+        $data = Pengajuan_inventaris::where('unit_kerja', '=', $id)->get();
 //        dd($data);
 
         return view('wr.pengajuan.detail.detail-pengajuan-fakultas', compact('data'));
@@ -122,6 +132,7 @@ class WrController extends Controller
     public function pengajuanBiro()
     {
         $daftar = Pengajuan_inventaris::orderBy('unit_kerja', 'asc')
+            ->groupBy('unit_kerja')
             ->where('unit_kerja', 'LIKE', 'Biro'.'%')
             ->orWhere('unit_kerja', 'LIKE', 'Unit'.'%')
             ->get();
@@ -165,6 +176,7 @@ class WrController extends Controller
         $daftar = DB::table('penghapusan_inventaris')
             ->join('daftar_inventaris', 'penghapusan_inventaris.id_daftar_inventaris', '=', 'daftar_inventaris.id')
             ->where('daftar_inventaris.unit_kerja', 'LIKE', 'Prodi'.'%')
+            ->groupBy('daftar_inventaris.unit_kerja')
             ->select('penghapusan_inventaris.id','daftar_inventaris.unit_kerja')
             ->get();
 
@@ -179,7 +191,7 @@ class WrController extends Controller
 //        dd($id);
         $data = DB::table('penghapusan_inventaris')
             ->join('daftar_inventaris', 'penghapusan_inventaris.id_daftar_inventaris', '=', 'daftar_inventaris.id')
-            ->where('penghapusan_inventaris.id','=', $id)
+            ->where('daftar_inventaris.unit_kerja','=', $id)
             ->select('daftar_inventaris.unit_kerja','daftar_inventaris.nama_inventaris','daftar_inventaris.tahun','penghapusan_inventaris.id','penghapusan_inventaris.id_daftar_inventaris','penghapusan_inventaris.jumlah_hapus','penghapusan_inventaris.jumlah_setelah','penghapusan_inventaris.satuan','penghapusan_inventaris.keterangan','penghapusan_inventaris.validasi_ketua','penghapusan_inventaris.validasi_wr')
             ->get();
 
@@ -191,6 +203,7 @@ class WrController extends Controller
         $daftar = DB::table('penghapusan_inventaris')
             ->join('daftar_inventaris', 'penghapusan_inventaris.id_daftar_inventaris', '=', 'daftar_inventaris.id')
             ->where('daftar_inventaris.unit_kerja', 'LIKE', 'Fakultas'.'%')
+            ->groupBy('daftar_inventaris.unit_kerja')
             ->select('penghapusan_inventaris.id','daftar_inventaris.unit_kerja')
             ->get();
 
@@ -205,7 +218,7 @@ class WrController extends Controller
 //        dd($id);
         $data = DB::table('penghapusan_inventaris')
             ->join('daftar_inventaris', 'penghapusan_inventaris.id_daftar_inventaris', '=', 'daftar_inventaris.id')
-            ->where('penghapusan_inventaris.id','=', $id)
+            ->where('daftar_inventaris.unit_kerja','=', $id)
             ->select('daftar_inventaris.unit_kerja','daftar_inventaris.nama_inventaris','daftar_inventaris.tahun','penghapusan_inventaris.id','penghapusan_inventaris.id_daftar_inventaris','penghapusan_inventaris.jumlah_hapus','penghapusan_inventaris.jumlah_setelah','penghapusan_inventaris.satuan','penghapusan_inventaris.keterangan','penghapusan_inventaris.validasi_ketua','penghapusan_inventaris.validasi_wr')
             ->get();
 
@@ -218,6 +231,7 @@ class WrController extends Controller
             ->join('daftar_inventaris', 'penghapusan_inventaris.id_daftar_inventaris', '=', 'daftar_inventaris.id')
             ->where('daftar_inventaris.unit_kerja', 'LIKE', 'Biro'.'%')
             ->orWhere('daftar_inventaris.unit_kerja', 'LIKE', 'Unit'.'%')
+            ->groupBy('daftar_inventaris.unit_kerja')
             ->select('penghapusan_inventaris.id','daftar_inventaris.unit_kerja')
             ->get();
 
@@ -232,7 +246,7 @@ class WrController extends Controller
 //        dd($id);
         $data = DB::table('penghapusan_inventaris')
             ->join('daftar_inventaris', 'penghapusan_inventaris.id_daftar_inventaris', '=', 'daftar_inventaris.id')
-            ->where('penghapusan_inventaris.id','=', $id)
+            ->where('daftar_inventaris.unit_kerja','=', $id)
             ->select('daftar_inventaris.unit_kerja','daftar_inventaris.nama_inventaris','daftar_inventaris.tahun','penghapusan_inventaris.id','penghapusan_inventaris.id_daftar_inventaris','penghapusan_inventaris.jumlah_hapus','penghapusan_inventaris.jumlah_setelah','penghapusan_inventaris.satuan','penghapusan_inventaris.keterangan','penghapusan_inventaris.validasi_ketua','penghapusan_inventaris.validasi_wr')
             ->get();
 

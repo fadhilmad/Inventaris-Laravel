@@ -86,7 +86,11 @@
                                 <tr class="text-center">
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $d->unit_kerja }}</td>
-                                    <td><a href="/inventaris/penghapusan/prodi/{{ $d->id }}/detail"><button class="btn btn-sm btn-success">Detail</button></a></td>
+                                    @if(Auth::user()->hasRole('pplp'))
+                                        <td><a href="/pplp/penghapusan/prodi/{{ $d->unit_kerja }}/detail"><button class="btn btn-sm btn-success">Detail</button></a></td>
+                                    @elseif(Auth::user()->hasRole('inventaris'))
+                                        <td><a href="/inventaris/penghapusan/prodi/{{ $d->unit_kerja }}/detail"><button class="btn btn-sm btn-success">Detail</button></a></td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>

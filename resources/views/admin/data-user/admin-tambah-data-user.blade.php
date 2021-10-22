@@ -81,7 +81,7 @@
                         <select class="jabatan form-control @error('jabatan') is-invalid @enderror" name="jabatan" value="{{ old('jabatan') }}" >
                             <option></option>
                             <option value="tu">Tata Usaha</option>
-                            <option value="kaprodi">Kaprodi</option>
+                            <option value="kaprodi">Ketua</option>
                             <option value="wr">Wakil Rektor</option>
                             <option value="inventaris">Inventaris</option>
                             <option value="pplp">PPLP</option>
