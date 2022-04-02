@@ -3,7 +3,7 @@
     <div class="container-fluid">
 
         <video autoplay muted loop id="myVideo">
-            <source src="{{ asset('videos/Untitled design (1).mp4') }}" type="video/mp4">
+            <source src="{{ asset('videos/profil.mp4') }}" type="video/mp4">
             Browser anda tidak kompatibel dengan HTML5 video.
         </video>
 
@@ -27,6 +27,8 @@
                     </form>
                     <hr class="mt-5">
                     <p class="text-muted">Hubungi kami apabila menemui kendala teknis melalui kontak berikut
+                    </p>
+                    <p class="text-muted"> <center> AKNPacitan@gmail.com
                     </p>
                 </div>
             </div>

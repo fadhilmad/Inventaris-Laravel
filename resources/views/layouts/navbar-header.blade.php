@@ -53,7 +53,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.1.1/dist/select2-bootstrap-5-theme.rtl.min.css" />
 
 
-    <title>Sistem Informasi Inventaris Unipma</title>
+    <title>Sistem Informasi Inventaris AKN Pacitan</title>
 </head>
 <body>
 @include('sweetalert::alert')
@@ -62,11 +62,11 @@
     <div class="container-fluid">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a class="d-flex align-items-center mb-lg-0 text-dark text-decoration-none">
-                <img src="{{url('/img/unipma.png')}}" width="50" height="50" role="img">
+                <img src="{{url('/img/akn.png')}}" width="50" height="50" role="img">
             </a>
 
             <p class="col-12 col-lg-auto me-lg-auto justify-content-center mb-md-0 ms-3">
-                Sistem Informasi Inventaris <br> UNIVERSITAS PGRI MADIUN
+                Sistem Informasi Inventaris <br> Akademi Komunitas Pacitan
             </p>
 
             @guest
@@ -145,7 +145,7 @@
 <!-- Footer -->
 <footer class="text-light p-3 bg-primary">
     <div class="text-center">
-        Copyright © 2021 Universitas PGRI Madiun
+        Copyright © 2022 Akademi Komunitas Pacitan
     </div>
 </footer>
 <!-- Footer -->
